@@ -1,0 +1,85 @@
+{
+  "_args": [
+    [
+      "git+https://github.com/rongcloud/server-sdk-nodejs.git",
+      "/opt/sealtalk/server"
+    ]
+  ],
+  "_from": "git+https://github.com/rongcloud/server-sdk-nodejs.git",
+  "_id": "rongcloud-sdk@1.0.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/rongcloud-sdk",
+  "_phantomChildren": {},
+  "_requested": {
+    "hosted": {
+      "directUrl": "https://raw.githubusercontent.com/rongcloud/server-sdk-nodejs/master/package.json",
+      "gitUrl": "git://github.com/rongcloud/server-sdk-nodejs.git",
+      "httpsUrl": "git+https://github.com/rongcloud/server-sdk-nodejs.git",
+      "shortcut": "github:rongcloud/server-sdk-nodejs",
+      "ssh": "git@github.com:rongcloud/server-sdk-nodejs.git",
+      "sshUrl": "git+ssh://git@github.com/rongcloud/server-sdk-nodejs.git",
+      "type": "github"
+    },
+    "name": null,
+    "raw": "git+https://github.com/rongcloud/server-sdk-nodejs.git",
+    "rawSpec": "git+https://github.com/rongcloud/server-sdk-nodejs.git",
+    "scope": null,
+    "spec": "git+https://github.com/rongcloud/server-sdk-nodejs.git",
+    "type": "hosted"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "git+https://github.com/rongcloud/server-sdk-nodejs.git#b6c2e50ecedc52acc04c8840da4c6510fef9f98b",
+  "_shasum": "c6c99b737480a245faaebf4f3800e7d6d00a9d84",
+  "_shrinkwrap": null,
+  "_spec": "git+https://github.com/rongcloud/server-sdk-nodejs.git",
+  "_where": "/opt/sealtalk/server",
+  "author": {
+    "name": "RongCloud"
+  },
+  "bugs": {
+    "url": "https://github.com/rongcloud/server-sdk-nodejs/issues"
+  },
+  "contributors": [
+    {
+      "name": "crystaldust",
+      "email": "juzhenatpku@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "bluebird": "^3.3.1",
+    "superagent": ">=0.21.0"
+  },
+  "description": "The Server SDK of RongCloud",
+  "devDependencies": {
+    "async": "^1.5.2",
+    "should": "^8.0.2",
+    "underscore": "^1.8.3",
+    "xml2js": "^0.4.15"
+  },
+  "gitHead": "b6c2e50ecedc52acc04c8840da4c6510fef9f98b",
+  "homepage": "http://rongcloud.cn",
+  "keywords": [
+    "im",
+    "mobile",
+    "sdk",
+    "server"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "rongcloud-sdk",
+  "optionalDependencies": {},
+  "readme": "The RongCloud Server SDK\n------------------------\n\n[Rong Cloud](http://rongcloud.cn) is committed to providing cloud-based instant messaging services for Internet and Mobile Internet developers. It enables developers to quickly integrate instant messaging capabilities with applications without any hardware installation requirements.\n\nThe server SDK is a wrapper of all the https API calls, which could be found [here](http://www.rongcloud.cn/docs/server.html)\n\n\n## Install\n\n```bash\n$ npm install rongcloud-sdk\n```\n\n## Init\n\n```js\nvar rongcloudSDK = require( 'rongcloud-sdk' );\nrongcloudSDK.init( 'APP_KEY', 'APP_SECRET' );\n```\n\n## Usage\n\n\n```js\nrongcloudSDK.user.getToken( '0001', 'Lance', 'http://files.domain.com/avatar.jpg', function( err, resultText ) {\n  if( err ) {\n    // Handle the error\n  }\n  else {\n    var result = JSON.parse( resultText );\n    if( result.code === 200 ) {\n      //Handle the result.token\n    }\n  }\n} );\n\n```\n\n## Asking for a xml format response\n\n```js\nrongcloudSDK.user.getToken( '0001', 'Lance', 'http://files.domain.com/avatar.jpg', 'xml', function( err, resultText ) {\n  if( err ) {\n    // Handle the error\n  }\n  else {\n    // Handle the xml string, since Node.JS doesn't provide a native xml object, you have to handle it by yourself.\n  }\n} );\n```\n\n##  API Coverage\nThe SDK covers all of the RongCloud APIs, including:\n\n[User](http://www.rongcloud.cn/docs/server.html#用户服务)\n\n[User block](http://www.rongcloud.cn/docs/server.html#用户封禁服务)\n\n[User blackList](http://www.rongcloud.cn/docs/server.html#用户黑名单服务)\n\n[Message](http://www.rongcloud.cn/docs/server.html#消息发送服务)\n\n[Messsage routing](http://www.rongcloud.cn/docs/server.html#消息路由服务)\n\n[Message history](http://www.rongcloud.cn/docs/server.html#消息历史记录服务)\n\n[Group](http://www.rongcloud.cn/docs/server.html#群组服务)\n\n[Chatroom](http://www.rongcloud.cn/docs/server.html#聊天室服务)\n\nThe SDK API is designed to keep accordant with the http request path, with all the **\"/\"** replaced with **\".\"**, that is, for the https API:\n\n`https://api.cn.rong.io/user/getToken`\n\nYou can call \n\n`rongcloudSDK.user.getToken`\n\n\n## Testing\nSince most of the time the user won't be using the components for testing(they are async, underscore, mocha, should and xml2js), these components are obtained only in the npm test script( you can see the scripts for testing in package.json), for testing, just run:\n\n```bash\n$ npm install\n$ npm installTestModules\n$ npm test\n```\n\n## License\n[MIT](LICENSE)\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rongcloud/server-sdk-nodejs.git"
+  },
+  "scripts": {
+    "installTestModules": "npm install async@1.2.1 mocha@2.2.5 should@6.0.3 underscore@1.8.3 xml2js@0.4.9",
+    "test": "cd test && mocha ."
+  },
+  "version": "1.0.3"
+}
